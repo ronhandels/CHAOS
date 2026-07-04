@@ -1,0 +1,11 @@
+item_id,model,rater,profile,date,rating,comment
+MD1,example-model,ben,www_ben_com,2026-07-05,Adequate,"Goal and install steps present, no developer contact details"
+MD2,example-model,ben,www_ben_com,2026-07-05,Basic,Starting file mentioned but no inputs list or runtime given
+MD3,example-model,ben,www_ben_com,2026-07-05,Absent or unclear,No LICENSE file found in the repository
+MD4,example-model,ben,www_ben_com,2026-07-05,Basic,Packages listed in README without version numbers
+MD5,example-model,ben,www_ben_com,2026-07-05,Absent or unclear,No version number or changelog found
+CQ1,example-model,ben,www_ben_com,2026-07-05,Non transparent,"Inputs, functions and outputs mixed together in one folder"
+CQ2,example-model,ben,www_ben_com,2026-07-05,Basic,Inconsistent naming conventions throughout
+CQ3,example-model,ben,www_ben_com,2026-07-05,Adequate,Inline comments plus a short model-flow description in the README
+CQ4,example-model,ben,www_ben_com,2026-07-05,Basic,Model coded as one large function
+RE1,example-model,ben,www_ben_com,2026-07-05,Different results,Model ran but base case output did not match the published table
