@@ -1,11 +1,2 @@
-item_id,model,rater,profile,date,rating,comment
-MD1,example-model,alice,www_alice_com,2026-07-04,Advanced,"README covers goal, contact, publication link and install steps"
-MD2,example-model,alice,www_alice_com,2026-07-04,Basic,"Only a short ""how to run"" paragraph, missing inputs list and runtime"
-MD3,example-model,alice,www_alice_com,2026-07-04,Advanced,MIT license in LICENSE file
-MD4,example-model,alice,www_alice_com,2026-07-04,Adequate,Package versions listed but no lockfile
-MD5,example-model,alice,www_alice_com,2026-07-04,Basic,Version number in README but no changelog
-CQ1,example-model,alice,www_alice_com,2026-07-04,Basic,"Separate folders for inputs, functions and outputs but no recognised framework"
-CQ2,example-model,alice,www_alice_com,2026-07-04,Adequate,Mostly tidyverse style but inconsistent variable-type prefixes
-CQ3,example-model,alice,www_alice_com,2026-07-04,Basic,"Inline comments only, no model-flow description"
-CQ4,example-model,alice,www_alice_com,2026-07-04,Adequate,"Separate functions for inputs and analysis, not fully modularized"
-RE1,example-model,alice,www_alice_com,2026-07-04,Base case only,Base case results matched the paper; scenario analyses were not checked
+model,link,version,date,rater,profile,MD1,MD1_comment,MD2,MD2_comment,MD3,MD3_comment,MD4,MD4_comment,MD5,MD5_comment,CQ1,CQ1_comment,CQ2,CQ2_comment,CQ3,CQ3_comment,CQ4,CQ4_comment,RE1,RE1_comment
+example-model,www_github_com_alice_model,v1.0.0,2026-07-04,alice,www_alice_com,Advanced,"README covers goal, contact, publication link and install steps",Basic,"Only a short ""how to run"" paragraph, missing inputs list and runtime",Advanced,MIT license in LICENSE file,Adequate,Package versions listed but no lockfile,Basic,Version number in README but no changelog,Basic,"Separate folders for inputs, functions and outputs but no recognised framework",Adequate,Mostly tidyverse style but inconsistent variable-type prefixes,Basic,"Inline comments only, no model-flow description",Adequate,"Separate functions for inputs and analysis, not fully modularized",Base case only,Base case results matched the paper; scenario analyses were not checked
