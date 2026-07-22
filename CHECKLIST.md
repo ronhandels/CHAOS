@@ -1,13 +1,3 @@
-# Health-Economic Model Documentation Checklist
-
-Three categories, ten items in total. Nine items are scored on a 4-point scale; one item (**License**) is scored on a 2-point scale.
-
-Each item has a stable `item_id`. Ratings should record only the chosen response option (e.g. `Basic`) plus the `item_id` it belongs to — the full definitions live here, once, so they don't need to be repeated in every rating file.
-
----
-
-## Category: Rubric meta data
-
 | item_id | Category | Item | Absent | Basic | Adequate | Advanced | Clarification |
 |-|-|-|---|------|------|------|---|
 | MD1 | Meta data | Starting point / README | Absent or unclear. | Present with some relevant items (see 'advanced') described or limited description. | Present with most relevant items (see 'advanced') described in detail. | Present including (or reference to) all relevant items described in detail:<br>• Model goal/purpose<br>• Developer(s) contact details<br>• Publication link/DOI detailing model scope (if applicable)<br>• Installation guidance (e.g., repository cloning such as from GitHub, required software and packages) | |
