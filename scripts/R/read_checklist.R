@@ -45,3 +45,7 @@ read_checklist <- function(path = "CHECKLIST.md") {
 if (sys.nframe() == 0) {
   print(read_checklist())
 }
+
+# Place checklist into a dataframe
+df.checklist <- read_checklist()
+
