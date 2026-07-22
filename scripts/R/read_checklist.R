@@ -1,7 +1,7 @@
 #' Read the checklist markdown table into a data frame
 #'
 #' Parses the first Markdown table found in a file (by default CHECKLIST.md)
-#' into a plain data frame. Uses only base R so nobody needs to install
+#' into a plain data frame. Uses only base R so no need to install
 #' packages just to read the checklist.
 #'
 #' Assumes standard GitHub-flavoured Markdown table syntax, e.g.:
