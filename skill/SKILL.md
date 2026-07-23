@@ -1,13 +1,21 @@
 ---
-name: chaos-model-review
-description: Guide to apply the CHecklist for Assessing Open Source health economic models (CHAOS) to assess the documentation quality of an open-source model. First, it reads in the CHAOS checklist as well as an open-source model (typically the files from a repository like GitHub). Second, it scores each item of the checklist against the open-source model. Third, it provides its scores in the form of a template table as well as in the form of a list alongside an explanation how it arrived at those scores and the certainty of the scores. Fourth, optionally, it produces recommendations for improving the documentation quality of the open-source model. It does not run the model to test its reproducibility. 
+name: "chaos-model-review"
+description: "Guide to apply the CHecklist for Assessing Open Source health economic
+  models (CHAOS) to assess the documentation quality of an open-source model. First,
+  it reads in the CHAOS checklist as well as an open-source model (typically the files
+  from a repository like GitHub). Second, it scores each item of the checklist against
+  the open-source model. Third, it provides its scores in the form of a template table
+  as well as in the form of a list alongside an explanation how it arrived at those
+  scores and the certainty of the scores. Fourth, optionally, it produces recommendations
+  for improving the documentation quality of the open-source model. It does not run
+  the model to test its reproducibility."
 ---
 
 # CHAOS model review
 
 Applies the 10-item CHecklist for Assessing Open Source health economic models (CHAOS) to a specific user-provided open-source health-economic model. It produces for each checklist item its score, evidence comments (i.e., a short explanation how it arrived at a score) and its scoring certainty. This is provided in the format of a template table as well as a list. 
 
-# Core workflow (3 Phases)
+# Core workflow (2 Phases)
 
 ## Phase 1: Take in all materials
 
