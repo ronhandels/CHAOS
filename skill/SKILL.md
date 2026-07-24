@@ -15,6 +15,17 @@ description: "Guide to apply the CHecklist for Assessing Open Source health econ
 
 Applies the 10-item CHecklist for Assessing Open Source health economic models (CHAOS) to a specific user-provided open-source health-economic model. It produces for each checklist item its Item Score, Evidence Comment (i.e., a short explanation how it arrived at an Item Score) and its Scoring Certainty. Results are reported in the format of a template table as well as a list. 
 
+Terminology: 
+
+- **Repository** — the open-source model's code repository (e.g. on GitHub) being assessed. 
+- **CHAOS checklist** — the CHecklist for Assessing Open Source health economic models, as defined in `CHECKLIST.md`. 
+- **Checklist item** — one of the 10 items in the CHAOS checklist (`MD1`–`MD5`, `CQ1`–`CQ4`, `RE1`). 
+- **Absent / Basic / Adequate / Advanced** — the four ordered tiers used for an Item Score, from lowest to highest. 
+- **Sub-element** — one of the individual present/absent checks that are combined to determine an item's tier. 
+- **Item Score** — the tier awarded to a checklist item: one of `Absent`, `Basic`, `Adequate`, `Advanced` (or `not assessed` for RE1). 
+- **Evidence Comment** — a short free-text explanation of what was observed that supports the Item Score. 
+- **Scoring Certainty** — a judgment of how certain the Item Score and Evidence Comment are: `Low`, `Medium`, or `High` (or `not assessed` for RE1). 
+
 # Core workflow (3 Phases)
 
 The core workflow consists of 3 phases: 1) read reference files, 2) generate scores, 3) report results. 
@@ -45,17 +56,6 @@ An application of the checklist consists of the following result for each item o
 3. Scoring Certainty
 
 Use the following rules to obtain these results. 
-
-### Terminology
-
-- **Item Score** — the tier awarded to a checklist item: one of `Absent`, `Basic`, `Adequate`, `Advanced` (or `not assessed` for RE1). 
-- **Evidence Comment** — a short free-text explanation of what was observed that supports the Item Score. 
-- **Scoring Certainty** — a judgment of how certain the Item Score and Evidence Comment are: `Low`, `Medium`, or `High` (or `not assessed` for RE1). 
-- **Absent / Basic / Adequate / Advanced** — the four ordered tiers used for an Item Score, from lowest to highest. 
-- **Sub-element** — one of the individual present/absent checks that are combined to determine an item's tier (used for MD1, MD2, MD4's package/version listing, and CQ2). 
-- **Checklist item** — one of the 10 items in the CHAOS checklist (`MD1`–`MD5`, `CQ1`–`CQ4`, `RE1`). 
-- **CHAOS checklist** — the CHecklist for Assessing Open Source health economic models, as defined in `CHECKLIST.md`. 
-- **Repository** — the open-source model's code repository (e.g. on GitHub) being assessed. 
 
 ### Step 2.1: Rules for Item Score
 
@@ -238,6 +238,31 @@ Work through all checklist items `MD1`, `MD2`, `MD3`, `MD4`, `MD5`, `CQ1`, `CQ2`
 
 Provide the scores in the following formats: 
 
-1. A downloadable CSV file according to the template `result_template.csv`. 
-2. A list of each item of the checklist and for each item the following 3 sub-items: Item Score, Evidence Comment and Scoring Certainty. 
-3. Any comment to anything that you consider relevant but is not covered by this skill/instruction. 
+**1. a downloadable CSV**
+
+File named `result_<model_name_abbreviation>.csv`. Use or create an abbreviation of the model name. 
+
+File contains the following columns: 
+
+1. `repo_url`: Link to the model's repository, or if user uploaded model files manually note 'user uploaded files'. 
+2. `repo_branch_used`: Name of the model's repository branch (note 'not applicable' if user uploaded files). 
+3. `repo_commit_sha`: SHA of the model's repository (note 'not applicable' if user uploaded files). 
+4. `rater`: Rater's name/identity (for example Claide.ai in case this Skill is run by Claude.ai). 
+5. `rating_datetime_utc`: Date and time in UTC format when the rating was produced. 
+6. `chaos_checklist_repo_version`: Version of the checklist when it was downloaded from GitHub CHAOS checklist repository. 
+7. `item_id`: Each item ID (e.g., `MD1`, `MD2` etc.) as read from the CHAOS checklist. 
+8. `category`: Each item category (e.g., Meta Data, Coding Quality, Reproducibility) as read from the CHAOS checklist, corresponding to item ID. 
+9. `item_name`: Each Scoring Item name as read from the CHAOS checklist, corresponding to item-id. 
+10. `item_score`: Each Item Score as from the generated results, corresponding to item ID and item name. 
+11. `evidence_comment`: Each Evidence Comment from the generated results, corresponding to item ID and item name. 
+12. `scoring_certainty`Each Scoring Certainty from the generated results, corresponding to item ID and item name. 
+
+Non-item specific values (e.g., repo_url, repo_branch_used etc.) should be repeated over all rows. 
+
+**2. List** 
+
+A list of each item of the checklist and for each item the following 3 sub-items: Item Score, Evidence Comment and Scoring Certainty. 
+
+**3. Comment**
+
+Any comment to anything that you consider relevant but is not covered by this skill/instruction. 
