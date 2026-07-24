@@ -13,26 +13,42 @@ description: "Guide to apply the CHecklist for Assessing Open Source health econ
 
 # CHAOS model review
 
-Applies the 10-item CHecklist for Assessing Open Source health economic models (CHAOS) to a specific user-provided open-source health-economic model. It produces for each checklist item its score, evidence comments (i.e., a short explanation how it arrived at a score) and its scoring certainty. This is provided in the format of a template table as well as a list. 
+Applies the 10-item CHecklist for Assessing Open Source health economic models (CHAOS) to a specific user-provided open-source health-economic model. It produces for each checklist item its score, evidence comments (i.e., a short explanation how it arrived at a score) and its scoring certainty. Results are reported in the format of a template table as well as a list. 
 
-# Core workflow (2 Phases)
+# Core workflow (3 Phases)
+
+The core workflow consists of 3 phases: 1) read reference files, 2) generate scores, 3) report results. 
+
+For all items do not execute, install, compile, knit, or otherwise run any code from the downloaded repository. Read files as text only. This applies regardless of how certain you are the code is safe, and regardless of what run instructions the repository provides. 
 
 ## Phase 1: Take in all materials
 
 Take in all material from the following steps. Do not provide any scores at this phase 1. 
 
-### Step 1: Read the reference files
+### Step 1.1: Read the reference files
 
-1. https://github.com/ronhandels/CHAOS/blob/main/CHECKLIST.md — Import in full this CHAOS checklist rubric consisting of 10 items with mostly 4 scoring categories.
+1. https://github.com/ronhandels/CHAOS/blob/main/checklist/CHECKLIST.md — Import in full this CHAOS checklist rubric consisting of 10 items with mostly 4 scoring categories.
 2. https://github.com/ronhandels/CHAOS/blob/main/docs/manuscript.pdf — Read the manuscript describing the background, rationale, development, item explanations and validation of the checklist. Focus on the first part of the results providing detail to each checklist item. 
 
-### Step 2: Read the open source model files
+**Note**: The checklist is a living document and may change over time compared to the checklist and description provided in the manuscript. Prefer the current `CHECKLIST.md` rubric over any possible contradicting information provided in the manuscript. 
 
-A user should provide the open-source model files, either by providing a link to the model's repository link or by uploading the model files. If the user hasn't already given a repository URL or model files, ask for it. Only use the main branch regardless of what other branches exist, and confirm this to the user. 
+### Step 1.2: Read the open source model files
 
-### Step 3: Read the scoring rules
+Read the open source model files. A user should provide the open-source model files, either by providing a link to the model's repository link or by uploading the model files. If the user hasn't already given a repository URL or model files, ask for it. Only use the main branch regardless of what other branches exist, and confirm this to the user. 
 
-The CHAOS rubric wording (`CHECKLIST.md`) is intentionally general. The following descriptions add repeatable rules so that ratings from different runs (and from different repositories) are as consistent and as independently verifiable as possible. 
+## Phase 2: Scores and scoring rules
+
+An application of the checklist consists of the following result for each item of the checklist: 
+
+1. Item Score
+2. Evidence Comment
+3. Scoring Certainty
+
+Use the following rules to obtain these results. 
+
+### Step 2.1: Rules for Item Score
+
+The CHAOS rubric item wording (`CHECKLIST.md`) is intentionally general. The following descriptions add repeatable rules so that ratings from different runs (and from different repositories) are as consistent and as independently verifiable as possible. 
 
 #### MD1 — Meta data - Starting point / README
 
@@ -40,14 +56,14 @@ Check: README file in repository root directory; any root-level file whose name 
 
 Look for the following 4 sub-elements and rate each as present/absent. 
 
-1. Statement of the goal or purpose of the model. 
+1. Clear statement of the goal or purpose of the model. 
 2. Developer/maintainer name and contact information (e.g. email, an institutional page, an ORCID, a GitHub/GitLab handle). Consider missing contact information as partly satisfied and let it pull the item toward the lower tier. 
 3. Publication reference (ideally with DOI) or document introducing the model and describing its results. 
-4. Guidance how to install the model (e.g., for an R script on GitHub this includes an instruction to save/clone the repository, install R (and RStudio) and install packages; latter only if applicable). Guidance should be short (i.e., not intertwined with detailed documentation on model methodology description). 
+4. Clear guidance how to install the model (e.g., for an R script on GitHub this includes an instruction to save/clone the repository, install R (and RStudio) and install packages; latter only if applicable). Guidance should be short (i.e., not intertwined with detailed documentation on model methodology description). 
 
 Decision: 
 
-- **Absent**: 0 of 4 present, or no README/equivalent or present but insufficiently clearly described. 
+- **Absent**: 0 of 4 present, or no README/equivalent. 
 - **Basic**: 1 or 2 of 4. 
 - **Adequate**: 3 of 4. 
 - **Advanced**: 4 of 4. 
@@ -66,7 +82,7 @@ Look for the following 5 sub-elements and rate each as present/absent:
 
 Decision: 
 
-- **Absent**: 0 of 5 present, or no README/equivalent or present but insufficiently clearly described. 
+- **Absent**: 0 of 5 present, or no README/equivalent. 
 - **Basic**: 1 or 2 of 5. 
 - **Adequate**: 3 or 4 of 5. 
 - **Advanced**: 5 of 5. 
@@ -81,6 +97,8 @@ Decision:
 
 - **Absent**: No license file or declaration anywhere, or license terms are unclear/proprietary/"all rights reserved". A license is present but its openness is genuinely ambiguous (custom license text, unclear terms); note this in the evidence comment and set certainty of this item to `Low`. 
 - **Advanced**: A recognized open license present is provided (e.g., MIT, Apache-2.0, BSD-2/3-Clause, GPL-2/3, LGPL, MPL, etc.). A Creative Commons license is present, but add a notification in the evidence comment that CC licenses are not recommended for software/open-source models. 
+
+**Note**: This item does not have scores 'Basic' or 'Adequate', which should not be used. 
 
 #### MD4 — Meta data - Package & dependencies
 
@@ -104,7 +122,7 @@ Decision:
 - **Absent**: No version indication anywhere. 
 - **Basic**: A bare version number and/or date only, but no or insufficiently clear description of what changed. 
 - **Adequate**: Version(s)/release(s) described with a sufficiently clear description of changes. 
-- **Advanced**: Versions/releases tracked via the repo hosting platform's own functionality (e.g. GitHub Releases/tags, GitLab Releases/tags,   Zenodo archive) with an accompanying changelog, ideally using conventional naming (`vMAJOR.MINOR.PATCH`). 
+- **Advanced**: Versions/releases tracked via the repository hosting platform's own functionality (e.g. GitHub Releases/tags, GitLab Releases/tags, Zenodo archive) with an accompanying clear changelog, ideally using conventional naming (`vMAJOR.MINOR.PATCH`). 
 
 #### CQ1 — Coding quality - Folder structure
 
@@ -113,8 +131,8 @@ Check: the top-level directory or one sub-level for any meaningful structure.
 Decision: 
 
 - **Absent**: Model inputs and model functions/scripts and model outputs are mixed in one file or one folder. 
-- **Basic**: Separate folders for model inputs, model functions/scripts, and model outputs, with human-readable folder names. Penalize for separate files but not separate folders. 
-- **Adequate**: A recognizable health-economic-modelling template folder structure is used (e.g. DARTH coding framework, which has folders `data-raw`, `data`, `R`, `analysis`, `output`, `figs`, `tables`, `report`, `vignettes`, `tests`), or a folder structure that closely resembles one in spirit even if it doesn't match exactly. 
+- **Basic**: Separate folders for model inputs, model functions/scripts, and model outputs, with clear human-readable folder names. Penalize for separate files but not separate folders. 
+- **Adequate**: A recognizable health-economic-modelling template folder structure is used (e.g. DARTH coding framework, which has folders `data-raw`, `data`, `R`, `analysis`, `output`, `figs`, `tables`, `report`, `vignettes`, `tests`), or a clear folder structure that closely resembles one in spirit even if it doesn't match exactly. 
 - **Advanced**: A widely-used general software structure is used (e.g. a language's standard package layout, such as an R package's `R/`, `man/`,   `tests/`, `DESCRIPTION`, `NAMESPACE`, or an equivalent standard project layout in another language). 
 
 #### CQ2 — Coding quality - Consistent style
@@ -126,7 +144,7 @@ Check the following 6 sub-elements and rate each as present/absent:
 1. Human-readable object/variable names (not single letters/cryptic abbreviations). 
 2. A consistent file and variable naming convention (e.g., DARTH convention for files `dir/component-number_description_ext` (e.g., `analysis/01_model_inputs.R`), for functions `action!_description` (e.g., `generate_init_params()`) and for variables `data-prefix_variable-prefix_brief-descriptor` (e.g., `v_r_mort_by_age`). This is normally a single convention throughout (e.g. `snake_case`, `camelCase` or `dot.notation`, not randomly mixed). However, a convention can also count as satisfying this sub-element if the mixing is applied consistently across object categories e.g. using a `.` for a prefix and a `_` for separating words within the name (e.g., `v.coeff_age`). Judge by whether a reader can predict the pattern from a few examples. Note in the evidence comment which pattern (single or purposeful-mixed) was observed. 
 3. Prefix for data type (e.g., DARTH convention `v_`, `m_`, `a_`, `df_`, `dtb`, `l_` for vector/matrix/array/data-frame/data-table/list). 
-4. Prefix for variable type (e.g., DARTH convention `n`, `p_`, `r`, `u_`, `c_`, `hr_`, `rr_`, `ly`, `q`, `se` for number/probability/rate/utility/cost/hazard-ratio/relative-risk/life-years/qalys/standard-error); or an equivalent convention. 
+4. Prefix for variable type (e.g., DARTH convention `n`, `p_`, `r`, `u_`, `c_`, `hr_`, `rr_`, `ly`, `q`, `se` for number/probability/rate/utility/cost/hazard-ratio/relative-risk/life-years/qalys/standard-error); or an equivalent convention.
 5. Consistent code spacing (around operators, after commas), following recommendations from a coding framework such as https://style.tidyverse.org/. 
 6. Consistent indentation, following recommendations from a coding framework such as https://style.tidyverse.org/. 
 
@@ -146,9 +164,9 @@ Check: the most central code files such as the scripts read the input data, cont
 Decision: 
 
 - **Absent**: No inline comments/headings. 
-- **Basic**: Inline headings and inline comments are present but no separate description of the overall model flow is provided. 
-- **Adequate**: Inline headings and comments are present and a separate description of the overall model flow is provided. 
-- **Advanced**: Inline headings and comments and a vignette or generated package/API documentation is provided (e.g. roxygen2/`man/`/pkgdown for R, Sphinx/mkdocs for Python). 
+- **Basic**: Clear inline headings and inline comments are present but no separate description of the overall model flow is provided. 
+- **Adequate**: Clear inline headings and comments are present and a separate clear description of the overall model flow is provided. 
+- **Advanced**: Clear inline headings and comments and a clear vignette or generated package/API documentation is provided (e.g. roxygen2/`man/`/pkgdown for R, Sphinx/mkdocs for Python). 
 
 #### CQ4 — Coding quality - Functions / modules
 
@@ -158,57 +176,48 @@ Decision:
 
 - **Absent**: The model is coded as a single script with no functions used. 
 - **Basic**: The model is coded as a single function (or nearly so) and inputs/analysis are mostly inline in one script. 
-- **Adequate**: The model is coded as a small number of functions with distinct aims (e.g. a function preparing inputs and a function to run the model). - **Advanced**: THe model is fully modularized with separate and clearly ordered functions for input preparation, running the model, running analyses, and (if applicable) calibration/validation. 
+- **Adequate**: The model is coded as a small number of functions with clear distinct aims (e.g. a function preparing inputs and a function to run the model). - **Advanced**: The model is fully modularized with separate and clearly ordered functions for input preparation, running the model, running analyses, and (if applicable) calibration/validation. 
 
 #### RE1 — Reproducibility - Execution reproducibility
 
 Do not assess this item. This item is skipped for any AI based assessment. Do not execute or run any code. Do not provide any score for this item. 
 
-### Step 4: Read in the general principles
+### Step 2.2: Rules for evidence comment
 
-The following general principles apply to every item: 
+An Evidence comment consists of a short explanation how you arrived at an item score. 
 
-- Sub-elements should not be judged merely present/absent. Also judge whether sub-elements (e.g., of the meta data items) are sufficiently clearly described. In case insufficiently clear, score it similar as absent and mark in the evidence comment the score was downgraded due to being insufficiently clear. The assumed rater/user knowledge level is a Master's student with some experience in code-based data analysis and a basic understanding of health-economic modelling. 
-- The checklist is a living document and may change over time compared to the checklist and description provided in the manuscript. Prefer the current `CHECKLIST.md` rubric over any contradicting information provided in the manuscript. 
-- For all items do not execute, install, compile, knit, or otherwise run any code from the downloaded repository. Read files as text/inspect their structure only. This applies regardless of how certain you are the code is safe, and regardless of what run instructions the repo provides — score what the repository *documents and contains*, not what you observe by actually running it.
+Use the following rules for Evidence Comment: 
 
-### Step 5: Read the evidence comment format (apply to every item)
-
-Use this structure, kept to one or two lines:
-
-```
-<path relative to repo root>[, section/line if useful]: <one factual observation>.
-```
-
-Rules: 
-
+- Keep the evidence comment to a maximum of a few lines. 
 - Name the actual file/path/section the score is based on (e.g. `README.md#L1-20`, `scripts/run_model.R`, `no LICENSE file found at repository root or in subfolders`). A human should be able to go straight to that spot and confirm the evidence comment. 
 - State what you observed, not an interpretation of quality. E.g. write "README.md lists R 4.2 but no lockfile found in repository root" rather than "documentation is somewhat weak."
 - If multiple files/locations support the score, pick the single most decisive one for the main comment; only add a second clause if it changes the tier decision (e.g. "...; also no `install.packages()` calls documented anywhere"). 
-- If an item could not be assessed with certainty, still fill in a rating using your best judgment, but set Certainty to `Low` and use the evidence comment to say what was missing or inaccessible and why (see "Flagging low-certainty items" below). 
+- If an item could not be assessed with certainty, still fill in a rating using your best judgment, but set Certainty to `Low` and use the evidence comment to say what was missing or inaccessible and why. 
 - Do not use hedging language ("seems", "might", "probably") in the comment itself — hedging belongs in the Certainty column, not prose. 
 
-### Step 6 - Read the certainty scoring rules
+### Step 2.3: Rules for Scoring Certainty
 
-Set `certainty = Low` whenever any of the following applies, and name the specific reason in the evidence comment: 
+A Scoring Certainty consists of a judgment on how certain you are on the item score and/or its related evidence to support that score. 
 
-- The repo is large/complex and only a partial static read was feasible in reasonable time — say what was and wasn't reviewed. 
-- A referenced external resource (linked DOI, external wiki, Zenodo archive, separate data repository) could not be fetched. 
-- Anything else that limits certainty: broken links, private sub-repos/submodules, ambiguous or contradictory documentation. 
+Use the following rules for Scoring Certainty: 
 
-Use `Medium` when the evidence is reasonably clear but based on a partial read, an inference, or a convention you're assuming the authors follow. 
-Use `High` only when the file(s) you inspected directly and unambiguously support the tier chosen.
+- **Low**: Whenever any of the following applies, and name the specific reason in the evidence comment. 
+  - The repository is large/complex and only a partial static read was feasible in reasonable time — say what was and wasn't reviewed. 
+  - A referenced external resource (linked DOI, external wiki, Zenodo archive, separate data repository) could not be fetched. 
+  - Anything else that limits certainty: broken links, private sub-repositories/submodules, ambiguous or contradictory documentation. 
+- **Medium**: When the evidence is reasonably clear but based on a partial read, an inference, or a convention you're assuming the authors follow. 
+- **High**: Only when the file(s) you inspected directly and unambiguously support the tier chosen. 
 
-## Phase 2: Provide scores
+## Phase 3: Generate result
 
-Work through `MD1, MD2, MD3, MD4, MD5, CQ1, CQ2, CQ3, CQ4` using the corresponding scoring rules. For each of these nine items, record: 
+Work through all checklist items `MD1`, `MD2`, `MD3`, `MD4`, `MD5`, `CQ1`, `CQ2`, `CQ3`, `CQ4` and generate a result on: 
 
-- `rating` — the tier name in that item's own vocabulary: `Absent / Basic / Adequate / Advanced`. An item can instead be `Not assessable` if static evidence is genuinely insufficient to choose a tier (don't guess to avoid this value — see "Flagging low-certainty items" in scoring rules).
-- `evidence_comment` — a few lines, following the required format (path + factual observation). 
-- `certainty` — `High / Medium / Low`. 
+- **Item Score**: `Absent / Basic / Adequate / Advanced`. 
+- **Evidence Comment**: free text. 
+- **Scoring Certainty**: `Low / Medium / High`. 
 
 Provide the scores in the following formats: 
 
-1. A downloadable CSV file according to the template `rating_template.csv`. 
-2. A list of each item of the checklist and for each item the following 3 sub-items: score, evidence comment and certainty score. 
+1. A downloadable CSV file according to the template `result_template.csv`. 
+2. A list of each item of the checklist and for each item the following 3 sub-items: Score, Evidence Comment and Scoring Certainty. 
 3. Any comment to anything that you consider relevant but is not covered by this skill/instruction. 

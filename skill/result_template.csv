@@ -1,0 +1,11 @@
+repo_url,repo_branch_used,repo_commit_sha,rater,rating_datetime_utc,chaos_checklist_version,item_id,category,item_name,score,evidence_comment,scoring_certainty
+,main,,claude.ai,,"CHAOS CHECKLIST.md, main@<short_sha> (retrieved <date>)",MD1,Meta data,Starting point / README,,,
+,main,,claude.ai,,"CHAOS CHECKLIST.md, main@<short_sha> (retrieved <date>)",MD2,Meta data,Run guidance,,,
+,main,,claude.ai,,"CHAOS CHECKLIST.md, main@<short_sha> (retrieved <date>)",MD3,Meta data,License,,,
+,main,,claude.ai,,"CHAOS CHECKLIST.md, main@<short_sha> (retrieved <date>)",MD4,Meta data,Package & dependencies,,,
+,main,,claude.ai,,"CHAOS CHECKLIST.md, main@<short_sha> (retrieved <date>)",MD5,Meta data,Model version (history),,,
+,main,,claude.ai,,"CHAOS CHECKLIST.md, main@<short_sha> (retrieved <date>)",CQ1,Coding quality,Folder structure,,,
+,main,,claude.ai,,"CHAOS CHECKLIST.md, main@<short_sha> (retrieved <date>)",CQ2,Coding quality,Consistent style,,,
+,main,,claude.ai,,"CHAOS CHECKLIST.md, main@<short_sha> (retrieved <date>)",CQ3,Coding quality,Coding documentation,,,
+,main,,claude.ai,,"CHAOS CHECKLIST.md, main@<short_sha> (retrieved <date>)",CQ4,Coding quality,Functions / modules,,,
+,main,,claude.ai,,"CHAOS CHECKLIST.md, main@<short_sha> (retrieved <date>)",RE1,Reproducibility,Execution reproducibility,,,
