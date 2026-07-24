@@ -13,7 +13,7 @@ description: "Guide to apply the CHecklist for Assessing Open Source health econ
 
 # CHAOS model review
 
-Applies the 10-item CHecklist for Assessing Open Source health economic models (CHAOS) to a specific user-provided open-source health-economic model. It produces for each checklist item its score, evidence comments (i.e., a short explanation how it arrived at a score) and its scoring certainty. Results are reported in the format of a template table as well as a list. 
+Applies the 10-item CHecklist for Assessing Open Source health economic models (CHAOS) to a specific user-provided open-source health-economic model. It produces for each checklist item its Item Score, Evidence Comment (i.e., a short explanation how it arrived at an Item Score) and its Scoring Certainty. Results are reported in the format of a template table as well as a list. 
 
 # Core workflow (3 Phases)
 
@@ -27,14 +27,14 @@ Take in all material from the following steps. Do not provide any scores at this
 
 ### Step 1.1: Read the reference files
 
-1. https://github.com/ronhandels/CHAOS/blob/main/checklist/CHECKLIST.md — Import in full this CHAOS checklist rubric consisting of 10 items with mostly 4 scoring categories.
+1. https://github.com/ronhandels/CHAOS/blob/main/checklist/CHECKLIST.md — Import in full this CHAOS checklist consisting of 10 items with mostly 4 scoring categories.
 2. https://github.com/ronhandels/CHAOS/blob/main/docs/manuscript.pdf — Read the manuscript describing the background, rationale, development, item explanations and validation of the checklist. Focus on the first part of the results providing detail to each checklist item. 
 
 **Note**: The checklist is a living document and may change over time compared to the checklist and description provided in the manuscript. Prefer the current `CHECKLIST.md` rubric over any possible contradicting information provided in the manuscript. 
 
-### Step 1.2: Read the open source model files
+### Step 1.2: Read the open-source model files
 
-Read the open source model files. A user should provide the open-source model files, either by providing a link to the model's repository link or by uploading the model files. If the user hasn't already given a repository URL or model files, ask for it. Only use the main branch regardless of what other branches exist, and confirm this to the user. 
+Read the open-source model files. A user should provide the open-source model files, either by providing a link to the model's repository link or by uploading the model files. If the user hasn't already given a repository URL or model files, ask for it. Only use the main branch regardless of what other branches exist, and confirm this to the user. 
 
 ## Phase 2: Scores and scoring rules
 
@@ -46,9 +46,20 @@ An application of the checklist consists of the following result for each item o
 
 Use the following rules to obtain these results. 
 
+### Terminology
+
+- **Item Score** — the tier awarded to a checklist item: one of `Absent`, `Basic`, `Adequate`, `Advanced` (or `not assessed` for RE1). 
+- **Evidence Comment** — a short free-text explanation of what was observed that supports the Item Score. 
+- **Scoring Certainty** — a judgment of how certain the Item Score and Evidence Comment are: `Low`, `Medium`, or `High` (or `not assessed` for RE1). 
+- **Absent / Basic / Adequate / Advanced** — the four ordered tiers used for an Item Score, from lowest to highest. 
+- **Sub-element** — one of the individual present/absent checks that are combined to determine an item's tier (used for MD1, MD2, MD4's package/version listing, and CQ2). 
+- **Checklist item** — one of the 10 items in the CHAOS checklist (`MD1`–`MD5`, `CQ1`–`CQ4`, `RE1`). 
+- **CHAOS checklist** — the CHecklist for Assessing Open Source health economic models, as defined in `CHECKLIST.md`. 
+- **Repository** — the open-source model's code repository (e.g. on GitHub) being assessed. 
+
 ### Step 2.1: Rules for Item Score
 
-The CHAOS rubric item wording (`CHECKLIST.md`) is intentionally general. The following descriptions add repeatable rules so that ratings from different runs (and from different repositories) are as consistent and as independently verifiable as possible. 
+The CHAOS checklist item wording (`CHECKLIST.md`) is intentionally general. The following descriptions add repeatable rules so that ratings from different runs (and from different repositories) are as consistent and as independently verifiable as possible. 
 
 #### MD1 — Meta data - Starting point / README
 
@@ -109,13 +120,13 @@ Decision:
 - **Absent**: No language/package list provided. 
 - **Basic**: Language and package names are listed, but no version numbers are provided. 
 - **Adequate**: Language and package names and their version numbers are listed, even if no separate dependency-description artifact (e.g. pasted `sessionInfo()` output, a `pip freeze` dump) is given. A description of dependencies alongside the versions is a plus but not required to reach this tier. 
-**Advanced**: - An actual lockfile / reproducible-environment artifact present (`renv.lock`, `poetry.lock`, pinned `environment.yml`, `Dockerfile` that builds a pinned environment, or distributed as a versioned package). 
+- **Advanced**: An actual lockfile / reproducible-environment artifact present (`renv.lock`, `poetry.lock`, pinned `environment.yml`, `Dockerfile` that builds a pinned environment, or distributed as a versioned package). 
 
 **Note**: In case no packages are loaded or used in any of the scripts, consider a package list as not applicable and only judge the coding language provided. 
 
 #### MD5 — Meta data - Model version (history)
 
-Check: README file in repository root directory, `CHANGELOG.md`, `NEWS.md`, `DESCRIPTION` `Version:` field (R packages) or an equivalent language-specific version field; the repo's releases/tags on its hosting platform (e.g. GitHub Releases/tags, GitLab Releases/tags), Zenodo badge/DOI.
+Check: README file in repository root directory, `CHANGELOG.md`, `NEWS.md`, `DESCRIPTION` `Version:` field (R packages) or an equivalent language-specific version field; the repository's releases/tags on its hosting platform (e.g. GitHub Releases/tags, GitLab Releases/tags), Zenodo badge/DOI.
 
 Decision: 
 
@@ -131,7 +142,7 @@ Check: the top-level directory or one sub-level for any meaningful structure.
 Decision: 
 
 - **Absent**: Model inputs and model functions/scripts and model outputs are mixed in one file or one folder. 
-- **Basic**: Separate folders for model inputs, model functions/scripts, and model outputs, with clear human-readable folder names. Penalize for separate files but not separate folders. 
+- **Basic**: Separate folders for model inputs, model functions/scripts, and model outputs, with clear human-readable folder names. Separate files but not separate folders is not sufficient for a scoring Basic. 
 - **Adequate**: A recognizable health-economic-modelling template folder structure is used (e.g. DARTH coding framework, which has folders `data-raw`, `data`, `R`, `analysis`, `output`, `figs`, `tables`, `report`, `vignettes`, `tests`), or a clear folder structure that closely resembles one in spirit even if it doesn't match exactly. 
 - **Advanced**: A widely-used general software structure is used (e.g. a language's standard package layout, such as an R package's `R/`, `man/`,   `tests/`, `DESCRIPTION`, `NAMESPACE`, or an equivalent standard project layout in another language). 
 
@@ -150,8 +161,8 @@ Check the following 6 sub-elements and rate each as present/absent:
 
 Decision: 
 
-- **Absent**: 1 of 6. 
-- **Basic**: 2 or 3 of 6. 
+- **Absent**: 0 of 6. 
+- **Basic**: 1, 2, or 3 of 6. 
 - **Adequate**: 4 or 5 of 6. 
 - **Advanced**: 6 of 6. 
 
@@ -176,15 +187,22 @@ Decision:
 
 - **Absent**: The model is coded as a single script with no functions used. 
 - **Basic**: The model is coded as a single function (or nearly so) and inputs/analysis are mostly inline in one script. 
-- **Adequate**: The model is coded as a small number of functions with clear distinct aims (e.g. a function preparing inputs and a function to run the model). - **Advanced**: The model is fully modularized with separate and clearly ordered functions for input preparation, running the model, running analyses, and (if applicable) calibration/validation. 
+- **Adequate**: The model is coded as a small number of functions with clear distinct aims (e.g. a function preparing inputs and a function to run the model). 
+- **Advanced**: The model is fully modularized with separate and clearly ordered functions for input preparation, running the model, running analyses, and (if applicable) calibration/validation. 
 
 #### RE1 — Reproducibility - Execution reproducibility
 
-Do not assess this item. This item is skipped for any AI based assessment. Do not execute or run any code. Do not provide any score for this item. 
+Do not assess this item. This item is skipped for any AI based assessment. Do not execute or run any code. The Item Score for this item must always state "not assessed". 
 
-### Step 2.2: Rules for evidence comment
+#### General rules for all items
 
-An Evidence comment consists of a short explanation how you arrived at an item score. 
+The following rules apply across all checklist items, in addition to the item-specific rules above. 
+
+- If a sub-element is present but its content is unclear or ambiguous, rate that sub-element as absent rather than present. 
+
+### Step 2.2: Rules for Evidence Comment
+
+An Evidence Comment consists of a short explanation how you arrived at an Item Score. 
 
 Use the following rules for Evidence Comment: 
 
@@ -192,12 +210,13 @@ Use the following rules for Evidence Comment:
 - Name the actual file/path/section the score is based on (e.g. `README.md#L1-20`, `scripts/run_model.R`, `no LICENSE file found at repository root or in subfolders`). A human should be able to go straight to that spot and confirm the evidence comment. 
 - State what you observed, not an interpretation of quality. E.g. write "README.md lists R 4.2 but no lockfile found in repository root" rather than "documentation is somewhat weak."
 - If multiple files/locations support the score, pick the single most decisive one for the main comment; only add a second clause if it changes the tier decision (e.g. "...; also no `install.packages()` calls documented anywhere"). 
-- If an item could not be assessed with certainty, still fill in a rating using your best judgment, but set Certainty to `Low` and use the evidence comment to say what was missing or inaccessible and why. 
-- Do not use hedging language ("seems", "might", "probably") in the comment itself — hedging belongs in the Certainty column, not prose. 
+- If an item could not be assessed with certainty, still fill in a rating using your best judgment, but set Scoring Certainty to `Low` and use the Evidence Comment to say what was missing or inaccessible and why. 
+- Do not use hedging language ("seems", "might", "probably") in the comment itself — hedging belongs in the Scoring Certainty column, not prose. 
+- If an Item Score is "not assessed", state "not assessed" for the Evidence Comment. 
 
 ### Step 2.3: Rules for Scoring Certainty
 
-A Scoring Certainty consists of a judgment on how certain you are on the item score and/or its related evidence to support that score. 
+A Scoring Certainty consists of a judgment on how certain you are on the Item Score and/or its related evidence to support that score. 
 
 Use the following rules for Scoring Certainty: 
 
@@ -207,17 +226,18 @@ Use the following rules for Scoring Certainty:
   - Anything else that limits certainty: broken links, private sub-repositories/submodules, ambiguous or contradictory documentation. 
 - **Medium**: When the evidence is reasonably clear but based on a partial read, an inference, or a convention you're assuming the authors follow. 
 - **High**: Only when the file(s) you inspected directly and unambiguously support the tier chosen. 
+- If an Item Score is "not assessed", state "not assessed" for the Scoring Certainty. 
 
 ## Phase 3: Generate result
 
-Work through all checklist items `MD1`, `MD2`, `MD3`, `MD4`, `MD5`, `CQ1`, `CQ2`, `CQ3`, `CQ4` and generate a result on: 
+Work through all checklist items `MD1`, `MD2`, `MD3`, `MD4`, `MD5`, `CQ1`, `CQ2`, `CQ3`, `CQ4`, `RE1` and generate a result on: 
 
-- **Item Score**: `Absent / Basic / Adequate / Advanced`. 
-- **Evidence Comment**: free text. 
-- **Scoring Certainty**: `Low / Medium / High`. 
+- **Item Score**: `Absent / Basic / Adequate / Advanced` (or `not assessed` for RE1). 
+- **Evidence Comment**: free text (or `not assessed` for RE1). 
+- **Scoring Certainty**: `Low / Medium / High` (or `not assessed` for RE1). 
 
 Provide the scores in the following formats: 
 
 1. A downloadable CSV file according to the template `result_template.csv`. 
-2. A list of each item of the checklist and for each item the following 3 sub-items: Score, Evidence Comment and Scoring Certainty. 
+2. A list of each item of the checklist and for each item the following 3 sub-items: Item Score, Evidence Comment and Scoring Certainty. 
 3. Any comment to anything that you consider relevant but is not covered by this skill/instruction. 
